@@ -43,7 +43,11 @@ import opendota.processors.warding.OnWardKilled;
 import opendota.processors.warding.OnWardPlaced;
 
 public class Parse {
+<<<<<<< HEAD
 public Integer tick = 0;
+=======
+
+>>>>>>> 66d434c07d0f813e59e1b3a0d16de1eec91bd1c0
 	public class Entry {
 		public Integer time = 0;
 		public String type;
@@ -62,8 +66,12 @@ public Integer tick = 0;
 		public String sourcename;
 		public String targetsourcename;
 		public Boolean attackerhero;
+<<<<<<< HEAD
     public Boolean targethero;
     public Boolean ispvpkill;
+=======
+		public Boolean targethero;
+>>>>>>> 66d434c07d0f813e59e1b3a0d16de1eec91bd1c0
 		public Boolean attackerillusion;
 		public Boolean targetillusion;
 		public String inflictor;
@@ -80,7 +88,10 @@ public Integer tick = 0;
 		public Integer y;
 		public Integer z;
 		public Float stuns;
+<<<<<<< HEAD
     public Integer currentTick;
+=======
+>>>>>>> 66d434c07d0f813e59e1b3a0d16de1eec91bd1c0
 		public Integer hero_id;
 		public transient List<Item> hero_inventory;
 		public Integer life_state;
@@ -151,7 +162,11 @@ public Integer tick = 0;
     HashMap<String, Integer> name_to_slot = new HashMap<String, Integer>();
     HashMap<Integer, Integer> slot_to_playerslot = new HashMap<Integer, Integer>();
     HashMap<Long, Integer> steamid_to_playerslot = new HashMap<Long, Integer>();
+<<<<<<< HEAD
 	  HashMap<Integer, Integer> cosmeticsMap = new HashMap<Integer, Integer>();
+=======
+	HashMap<Integer, Integer> cosmeticsMap = new HashMap<Integer, Integer>();
+>>>>>>> 66d434c07d0f813e59e1b3a0d16de1eec91bd1c0
     HashMap<Integer, Integer> ward_ehandle_to_slot = new HashMap<Integer, Integer>();
     InputStream is = null;
     OutputStream os = null;
@@ -206,7 +221,10 @@ public Integer tick = 0;
     public void onMessage(Context ctx, GeneratedMessage message) {
         System.err.println(message.getClass().getName());
         System.out.println(message.toString());
+<<<<<<< HEAD
         
+=======
+>>>>>>> 66d434c07d0f813e59e1b3a0d16de1eec91bd1c0
     }
 
     /*@OnMessage(DotaUserMessages.CDOTAUserMsg_SpectatorPlayerClick.class)
@@ -258,7 +276,10 @@ public Integer tick = 0;
         Entry entry = new Entry(time);
         entry.type = "pings";
         entry.slot = message.getPlayerId();
+<<<<<<< HEAD
         entry.currentTick = tick;
+=======
+>>>>>>> 66d434c07d0f813e59e1b3a0d16de1eec91bd1c0
         /*
         System.err.println(message);
         player_id: 7
@@ -286,7 +307,10 @@ public Integer tick = 0;
         entry.player1 = player1;
         entry.player2 = player2;
         entry.value = value;
+<<<<<<< HEAD
         entry.currentTick = tick;
+=======
+>>>>>>> 66d434c07d0f813e59e1b3a0d16de1eec91bd1c0
         output(entry);
     }
     
@@ -295,8 +319,12 @@ public Integer tick = 0;
     	Entry entry = new Entry(time);
     	entry.type = "chatwheel";
     	entry.slot = message.getPlayerId();
+<<<<<<< HEAD
       entry.key = String.valueOf(message.getChatMessageId());
       entry.currentTick = tick;
+=======
+    	entry.key = String.valueOf(message.getChatMessageId());
+>>>>>>> 66d434c07d0f813e59e1b3a0d16de1eec91bd1c0
     	output(entry);
     }
 
@@ -306,7 +334,10 @@ public Integer tick = 0;
         entry.unit =  String.valueOf(message.getPrefix());
         entry.key =  String.valueOf(message.getText());
         entry.type = "chat";
+<<<<<<< HEAD
         entry.currentTick = tick;
+=======
+>>>>>>> 66d434c07d0f813e59e1b3a0d16de1eec91bd1c0
         output(entry);
     }
 
@@ -318,7 +349,10 @@ public Integer tick = 0;
         Entity e = ctx.getProcessor(Entities.class).getByIndex(message.getEntityindex());
         entry.slot = getEntityProperty(e, "m_iPlayerID", null);
         entry.type = "chat";
+<<<<<<< HEAD
         entry.currentTick = tick;
+=======
+>>>>>>> 66d434c07d0f813e59e1b3a0d16de1eec91bd1c0
         output(entry);
     }
 
@@ -352,7 +386,10 @@ public Integer tick = 0;
             //create a new entry
             Entry combatLogEntry = new Entry(time);
             combatLogEntry.type = cle.getType().name();
+<<<<<<< HEAD
             combatLogEntry.currentTick = tick;
+=======
+>>>>>>> 66d434c07d0f813e59e1b3a0d16de1eec91bd1c0
             //translate the fields using string tables if necessary (get*Name methods)
             combatLogEntry.attackername = cle.getAttackerName();
             combatLogEntry.targetname = cle.getTargetName();
@@ -364,10 +401,13 @@ public Integer tick = 0;
             combatLogEntry.attackerillusion = cle.isAttackerIllusion();
             combatLogEntry.targetillusion = cle.isTargetIllusion();
             combatLogEntry.value = cle.getValue();
+<<<<<<< HEAD
 
             if(combatLogEntry.type == "DOTA_COMBATLOG_DEATH" && !combatLogEntry.targetillusion && combatLogEntry.targethero && combatLogEntry.attackerhero) {
               combatLogEntry.ispvpkill = true;
             }
+=======
+>>>>>>> 66d434c07d0f813e59e1b3a0d16de1eec91bd1c0
             float stunDuration = cle.getStunDuration();
             if (stunDuration > 0) {
             	combatLogEntry.stun_duration = stunDuration;
@@ -438,8 +478,11 @@ public Integer tick = 0;
     @UsesEntities
     @OnTickStart
     public void onTickStart(Context ctx, boolean synthetic) {
+<<<<<<< HEAD
       tick++;
       
+=======
+>>>>>>> 66d434c07d0f813e59e1b3a0d16de1eec91bd1c0
         /*
         Iterator<Entity> cosmetics = ctx.getProcessor(Entities.class).getAllByDtName("CDOTAWearableItem");
         while ( cosmetics.hasNext() )
@@ -604,7 +647,10 @@ public Integer tick = 0;
                     entry.roshans_killed = getEntityProperty(dataTeam, "m_vecDataTeam.%i.m_iRoshanKills", teamSlot);
                     entry.observers_placed = getEntityProperty(dataTeam, "m_vecDataTeam.%i.m_iObserverWardsPlaced", teamSlot);
                     
+<<<<<<< HEAD
                     
+=======
+>>>>>>> 66d434c07d0f813e59e1b3a0d16de1eec91bd1c0
                     if (teamSlot >= 0) 
                     {
                         entry.gold = getEntityProperty(dataTeam, "m_vecDataTeam.%i.m_iTotalEarnedGold", teamSlot);
