@@ -1,5 +1,7 @@
 package opendota.processors.warding;
 
+import java.lang.annotation.Annotation;
+
 import skadistats.clarity.event.UsagePointMarker;
 import skadistats.clarity.event.UsagePointType;
 import skadistats.clarity.model.Entity;

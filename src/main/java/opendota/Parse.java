@@ -426,8 +426,6 @@ public class Parse {
             Entry combatLogEntry = new Entry(time);
             combatLogEntry.type = cle.getType().name();
             combatLogEntry.currentTick = tick;
-            combatLogEntry.x = getPreciseLocation(cle.getCellX(), cle.getX());
-            combatLogEntry.y = getPreciseLocation(cle.getCellY(), cle.getY());
             // translate the fields using string tables if necessary (get*Name methods)
             combatLogEntry.attackername = cle.getAttackerName();
             combatLogEntry.targetname = cle.getTargetName();
